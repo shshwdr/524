@@ -16,6 +16,7 @@ public class astart : MonoBehaviour {
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
     private bool canMove = true;
+    private bool canSearch = true;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,7 @@ public class astart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (target == null) {
+		if (target == null&&canSearch) {
 			target=GetComponentInParent<TeamInfo>().targetBuildings[0];
 			ReDirect();
 		}
@@ -44,7 +45,11 @@ public class astart : MonoBehaviour {
     
 
 	public void ReDirect(){
-		seeker.StartPath (transform.position, target.transform.position,OnPathComplete);
+        if (canSearch)
+        {
+            canSearch = false;
+            seeker.StartPath(transform.position, target.transform.position, OnPathComplete);
+        }
 	}
 
 	public void FixedUpdate () {
@@ -80,5 +85,6 @@ public class astart : MonoBehaviour {
 			//Reset the waypoint counter
 			currentWaypoint = 0;
 		}
+        canSearch = true;
 	}
 }

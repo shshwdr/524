@@ -4,6 +4,7 @@ using System.Collections;
 public class MouseClick : MonoBehaviour {
     public Texture2D cursorAttack;
     public Texture2D cursorMove;
+    public Texture2D cursorPet;
     public CursorMode cursorMode;
     public Vector2 hotSpot;
     public GameObject player;
@@ -30,6 +31,16 @@ public class MouseClick : MonoBehaviour {
                 { 
                     player.GetComponent<AstarPlayer>().SetTarget(hitInfo.collider.gameObject);
                     Debug.Log("hit");
+                }
+            }
+            else if (hitInfo.collider.tag == Tags.Pet)
+            {
+
+                Cursor.SetCursor(cursorPet, hotSpot, cursorMode);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    player.GetComponent<AstarPlayer>().SetTarget(hitInfo.collider.gameObject);
+                    Debug.Log("pet");
                 }
             }
             else
