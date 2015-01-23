@@ -21,7 +21,7 @@ public class MouseClick : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray,out hitInfo))
         {
-            Debug.Log(hitInfo.collider);
+          //  Debug.Log(hitInfo.collider);
             if (hitInfo.collider.tag == Tags.Building||hitInfo.collider.tag==Tags.Minor)
             {
 
@@ -29,6 +29,7 @@ public class MouseClick : MonoBehaviour {
                 if (Input.GetMouseButtonDown(1))
                 { 
                     player.GetComponent<AstarPlayer>().SetTarget(hitInfo.collider.gameObject);
+                    Debug.Log("hit");
                 }
             }
             else

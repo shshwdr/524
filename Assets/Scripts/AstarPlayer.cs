@@ -37,6 +37,7 @@ public class AstarPlayer : MonoBehaviour {
     {
         
         seeker.StartPath(transform.position, tra, OnPathComplete);
+        Debug.Log("set target");
     }
 
 	public void FixedUpdate () {

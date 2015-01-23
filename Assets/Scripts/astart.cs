@@ -15,6 +15,7 @@ public class astart : MonoBehaviour {
 	
 	//The waypoint we are currently moving towards
 	private int currentWaypoint = 0;
+    private bool canMove = true;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,16 @@ public class astart : MonoBehaviour {
 			ReDirect();
 		}
 	}
+    public void Stay()
+    {
+        canMove = false;
+    }
+    public void RestartMove()
+    {
+        canMove = true;
+       // ReDirect();
+    }
+    
 
 	public void ReDirect(){
 		seeker.StartPath (transform.position, target.transform.position,OnPathComplete);
@@ -41,6 +52,8 @@ public class astart : MonoBehaviour {
 			//We have no path to move after yet
 			return;
 		}
+        if (!canMove)
+        { return; }
 		
 		if (currentWaypoint >= path.vectorPath.Count) {
 			Debug.Log ("End Of Path Reached");
