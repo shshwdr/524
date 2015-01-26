@@ -8,7 +8,7 @@ public class AstarPlayer : MonoBehaviour {
 	public Path path;
 	private CharacterController controller;
 	//The AI's speed per second
-	public float speed = 10;
+	public float speed = 300;
 	
 	//The max distance from the AI to a waypoint for it to continue to the next waypoint
 	public float nextWaypointDistance = 3;

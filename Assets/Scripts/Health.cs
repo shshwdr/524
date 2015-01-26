@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-	public int HEALTH;
-	private int health;
+	public float HEALTH;
+	private float health;
 	// Use this for initialization
 	void Start () {
 		health = HEALTH;
@@ -16,14 +16,21 @@ public class Health : MonoBehaviour {
 	}
 	void die(){
 		Destroy (gameObject);
-		if (HEALTH==20) {
+		if (HEALTH==200) {
 			Debug.Log("building die");
 			GetComponentInParent<TeamInfo>().targetBuildings.Remove(GetComponentInParent<TeamInfo>().targetBuildings[0]);
+            
 		}
+        if (HEALTH == 100) //inhabitor
+        {
+            Camera.main.GetComponent<GUI_Temp>().lossTeam = GetComponent<Team>().team.ToString();
+           
+        }
+
 	}
-	void BeAttack(int hp)
+	public void BeAttack(float hp)
 	{
-		Debug.Log (gameObject+ " lost health "+hp);
+		//Debug.Log (gameObject+ " lost health "+hp);
 		health -= hp;
 	}
 }

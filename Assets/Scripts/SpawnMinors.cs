@@ -21,8 +21,14 @@ public class SpawnMinors : MonoBehaviour {
 		newMinor.GetComponent<Team> ().team = team;
 		//newMinor.GetComponent<MinorMove> ().MoveTarget = GetComponentInParent<TeamInfo> ().targetBuilding;
 		//newMinor.GetComponent<MinorMove> ().TeamObject = gameObject.GetComponentInParent<TeamInfo> ();
-		newMinor.GetComponent<astart> ().target = GetComponentInParent<TeamInfo> ().targetBuildings[0];
-		newMinor.transform.parent = transform.parent;
+		
+        for (int i = 0; i < 2; i++)
+        {
+            newMinor.GetComponent<astart>().target = GetComponentInParent<TeamInfo>().targetBuildings[i];
+            if (newMinor.GetComponent<astart>().target!=null)
+                break;
+        }
+            newMinor.transform.parent = transform.parent;
 	}
 	
 	// Update is called once per frame

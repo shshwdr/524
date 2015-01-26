@@ -39,7 +39,8 @@ public class MinorAI : MonoBehaviour {
 				//Debug.Log("stop");
                 state=State.attack;
                 GetComponent<astart>().Stay();
-				Attack(col.gameObject);
+				//Attack(col.gameObject);
+                GetComponent<Attack>().AttackSimple(col.gameObject);
                 AttackingObj=col.gameObject;
 				break;
 
@@ -52,6 +53,6 @@ public class MinorAI : MonoBehaviour {
 	}
 	void Attack(GameObject obj)
 	{
-		obj.SendMessage ("BeAttack",info.attack, SendMessageOptions.DontRequireReceiver);
+		//obj.SendMessage ("BeAttack",info.attack, SendMessageOptions.DontRequireReceiver);
 	}
 }
